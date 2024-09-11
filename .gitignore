@@ -1,0 +1,35 @@
+
+# Node modules directory
+node_modules/
+
+# Environment variable files
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Build output (if applicable)
+dist/
+build/
+
+# Dependency directories
+bower_components/
+
+# Test coverage
+coverage/
+
+# Optional: npm package lock file (if you use a lock file)
+package-lock.json
+
+# Optional: Yarn lock file (if using Yarn)
+yarn.lock
