@@ -1,10 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Player = require("./Player");
+const cors = require("cors");
+const app = express();
+
+app.use(cors());
 
 require("dotenv").config();
 
-const app = express();
 const port = process.env.PORT || 3001;
 
 // Connect to MongoDB
