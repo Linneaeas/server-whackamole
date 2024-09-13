@@ -56,41 +56,46 @@ Example JSON:
 ### Top 10 highest scores:
 
 ```javascript
-async function getHighestScores() {
-  try {
-    const response = await fetch("http://localhost:3001/leaderboard/highest-scores");
-    if (!response.ok) {
-      throw new Error("Network response was not ok.");
+const fetchHighScores = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3001/leaderboard/highest-scores"
+      );
+      console.log("High Scores Response:", response);
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      const data = await response.json();
+      console.log("Fetched High Scores Data:", data);
+
+      setHighScores(data);
+    } catch (error) {
+      console.error("Error fetching high scores:", error);
     }
-    const data = await response.json();
-    console.log("Highest Scores:", data);
-    // Process and display the data as needed
-  } catch (error) {
-    console.error("Error fetching highest scores:", error);
-  }
-}
-// Example usage
-getHighestScores();
+  };
 ```
 
 ### Top 10 fastest hit rates:
 
 ```javascript
-async function getFastestHitRates() {
-  try {
-    const response = await fetch("http://localhost:3001/leaderboard/fastest-hit-rates");
-    if (!response.ok) {
-      throw new Error("Network response was not ok.");
+ const fetchReactionTimes = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3001/leaderboard/fastest-hit-rates"
+      );
+      console.log("Reaction times  Response:", response);
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      const data = await response.json();
+      console.log("Fetched Reaction times Data:", data);
+
+      setReactionTimes(data);
+    } catch (error) {
+      console.error("Error fetching reaction times:", error);
     }
-    const data = await response.json();
-    console.log("Fastest Hit Rates:", data);
-    // Process and display the data as needed
-  } catch (error) {
-    console.error("Error fetching fastest hit rates:", error);
-  }
-}
-// Example usage
-getFastestHitRates();
+  };
+
 ```
 
 ### Submit new player:
@@ -113,57 +118,4 @@ getFastestHitRates();
     console.error("Error:", result.error);
   }
 }
-```
-
-### Extra example in context
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whack-a-Mole Leaderboards</title>
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <h1>Whack-a-Mole Leaderboards</h1>
-
-  <h2>Highest Scores</h2>
-  <ul id="highest-scores-list"></ul>
-
-  <h2>Fastest Hit Rates</h2>
-  <ul id="fastest-hit-rates-list"></ul>
-
-  <script>
-    async function fetchLeaderboards() {
-      // Fetch and display highest scores
-      try {
-        const response = await fetch("http://localhost:3001/leaderboard/highest-scores");
-        const highestScores = await response.json();
-        const highestScoresList = document.getElementById("highest-scores-list");
-        highestScoresList.innerHTML = highestScores.map(player =>
-          `<li>${player.playerName}: Score - ${player.score}</li>`
-        ).join("");
-      } catch (error) {
-        console.error("Error fetching highest scores:", error);
-      }
-
-      // Fetch and display fastest hit rates
-      try {
-        const response = await fetch("http://localhost:3001/leaderboard/fastest-hit-rates");
-        const fastestHitRates = await response.json();
-        const fastestHitRatesList = document.getElementById("fastest-hit-rates-list");
-        fastestHitRatesList.innerHTML = fastestHitRates.map(player =>
-          `<li>${player.playerName}: Hit Rate - ${player.hitRate} ms</li>`
-        ).join("");
-      } catch (error) {
-        console.error("Error fetching fastest hit rates:", error);
-      }
-    }
-    // Call the function to fetch and display the data when the page loads
-    fetchLeaderboards();
-  </script>
-</body>
-</html>
 ```
