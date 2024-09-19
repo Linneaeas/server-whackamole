@@ -1,6 +1,6 @@
 # SET UP
 
-_You might your IP adress to Linnea so she can add it to the list of users that can access the database or change access permisions_
+_Send your IP adress(11digits) to Linnea so she can add it to the list of users that can access the database or change access permisions. Check your IP Adress here:https://whatismyipaddress.com/_
 
 ## 1. Clone project from Github.
 
