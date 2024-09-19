@@ -79,8 +79,9 @@ app.get("/leaderboard/highest-scores", async (req, res) => {
 
 app.get("/leaderboard/fastest-hit-rates", async (req, res) => {
   try {
-    // Find players, sort by hitRate in ascending order, limit to top 10
-    const players = await Player.find().sort({ hitRate: 1 }).limit(10);
+    const players = await Player.find({ hitRate: { $gt: 0 } })
+      .sort({ hitRate: 1 })
+      .limit(10);
     res.json(players);
   } catch (error) {
     res.status(500).json({ error: error.message });
