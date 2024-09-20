@@ -1,6 +1,6 @@
 # SET UP
 
-_Send your IP adress(11digits) to Linnea so she can add it to the list of users that can access the database or change access permisions. Check your IP Adress here:https://whatismyipaddress.com/_
+_Send your IP adress to Linnea so she can add it to the list of users that can access the database or change access permisions. Check your IP Adress here:https://whatismyipaddress.com/_
 
 ## 1. Clone project from Github.
 
@@ -10,7 +10,7 @@ Use Github desktop or through terminal with:
 ## 2. Create a `.env ` file.
 
 Add the following lines to the file:
-`MONGO_URI=` _see trello for URI_
+`MONGO_URI=` _see trello or teams for URI_
 `PORT=3001`
 
 ## 3. Install dependencies
